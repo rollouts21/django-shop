@@ -31,6 +31,20 @@
 git clone https://github.com/rollouts21/django-shop
 cd django-shop
 ```
+### 2. Создание виртуального окружения (venv)
+Создайте виртуальное окружение
+```bash
+python -m venv .venv
+```
+Активируйте .venv
+Unix:
+```bash
+.venv/bin/activate
+```
+Windows:
+```bash
+.venv/Script/Activate.ps1
+```
 
 ### 2. Установка зависимостей
 Убедитесь, что у вас установлен Python 3. Затем установите зависимости:
