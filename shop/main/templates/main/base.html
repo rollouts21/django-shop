@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+    {% comment %} <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" /> {% endcomment %}
+  </head>
+  <body>
+    <header class="header sticky-top">
+      <div class="header-container d-flex">
+        <navbar class="header-nav pt-4">
+          <ul class="header-list d-flex">
+            <a href="{% url 'main:index' %}?tab=about">О нас</a>
+            <a href="{% url 'main:index' %}?tab=products">Продукты</a>
+            <a href="{% url 'main:index' %}?tab=services">Услуги</a>
+            <a href="{% url 'main:index' %}?tab=contacts">Контакты</a>
+          </ul>
+        </navbar>
+        <form method="GET" action="{% url 'main:index' %}" class="search-form">
+          <input type="text" name="q" placeholder="Search products..." />
+          <input type="hidden" name="tab" value="{{ tab }}" />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </header>
+
+    {% comment %} <div class="container">
+      {% endcomment %}
+      {% block content %}
+
+      {% endblock %}
+      {% comment %}
+    </div> {% endcomment %}
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

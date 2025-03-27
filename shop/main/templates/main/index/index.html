@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+  Имя магазина
+{% endblock %}
+
+{% block content %}
+  <body>
+    {% if message %}
+      <div class="message">{{ message }}</div>
+    {% endif %}
+
+    {% if tab == 'products' %}
+      <div class="container" id="Products">
+        {% for product in products %}
+          <a href="{{ product.get_absolute_url }}">
+            <div class="card one-product">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+              <h1>{{ product.name }}</h1>
+              <p>{{ product.price }} ₽</p>
+              <p>
+                {{ product.description|slice:':20' }}{% if product.description|length > 20 %}...{% endif %}
+              </p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% elif tab == 'services' %}
+      <div class="container" id="Services">
+        {% for service in services %}
+          <a href="{{ service.get_absolute_url }}">
+            <div class="card one-service">
+              <h1>{{ service.name }}</h1>
+              <p>{{ service.price }} ₽</p>
+              <p>
+                {{ service.description|slice:':20' }}{% if service.description|length > 20 %}...{% endif %}
+              </p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% elif tab == 'about' %}
+      {% for item in about %}
+        <div class="about">
+          <h1>{{ item.name }}</h1>
+          <p>{{ item.description }}</p>
+        </div>
+      {% endfor %}
+    {% elif tab == 'contacts' %}
+      <div class="contacts">
+        {% for contact in contacts %}
+          <h1>{{ contact.name }}</h1>
+          <p>Мой номер: {{ contact.number }}</p>
+          {% if contact.second_number %}
+            <p>Второй номер: {{ contact.second_number }}</p>
+          {% endif %}
+          <p>Написать нам: {{ contact.mail }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </body>
+{% endblock %}

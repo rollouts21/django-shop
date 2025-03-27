@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 one-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+        <div class="names">
+          <h1>{{ product.name }}</h1>
+          <p>{{ product.description }}</p>
+          <p>{{ product.price }} ₽</p>
+          <p>Осталось всего: {{ product.amount }} шт.</p>
+          <a href="/?tab=contacts">Купить</a>
+          <a href="/?tab=products" class="back">Назад</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
