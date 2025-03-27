@@ -55,6 +55,7 @@ pip install -r req.txt
 ### 3. Настройка базы данных
 Примените миграции для настройки базы данных:
 ```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 ### 5. Создание media папки
