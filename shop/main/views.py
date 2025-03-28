@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
 from .models import Product, Service, About, Contacts
 
 
@@ -14,13 +14,13 @@ def service_detail(request, slug):
 
 
 def index(request):
-    query = request.GET.get("q")
+    query = request.GET.get("q", "")
     tab = request.GET.get("tab", "products")
     message = ""
 
     if tab == "products":
         if query:
-            products = Product.objects.filter(name__icontains=query)
+            products = Product.objects.filter(Q(name__iregex=query))
             if not products.exists():
                 message = "Ничего не найдено, попробуйте поискать в услугах."
         else:

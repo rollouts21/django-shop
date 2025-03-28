@@ -25,7 +25,7 @@
           </ul>
         </navbar>
         <form method="GET" action="{% url 'main:index' %}" class="search-form">
-          <input type="text" name="q" placeholder="Search products..." />
+          <input type="text" name="q" value="{{ query }}" placeholder="Search products..." />
           <input type="hidden" name="tab" value="{{ tab }}" />
           <button type="submit">Search</button>
         </form>
