@@ -19,8 +19,6 @@
   - **`urls.py`** — маршруты для приложения.
   - **`templates/`** — HTML-шаблоны для отображения страниц.
   - **`static/`** — статические файлы (CSS, изображения, JavaScript).
-  - **`templatetags/`** — кастомные фильтры и теги для шаблонов.
-
 ---
 
 ## Установка и запуск проекта
@@ -33,19 +31,44 @@
 git clone https://github.com/rollouts21/django-shop
 cd django-shop
 ```
+### 2. Создание виртуального окружения (venv)
+Создайте виртуальное окружение
+```bash
+python -m venv .venv
+```
+Активируйте .venv
+Unix:
+```bash
+.venv/bin/activate
+```
+Windows:
+```bash
+.venv/Script/Activate.ps1
+```
 
 ### 2. Установка зависимостей
 Убедитесь, что у вас установлен Python 3. Затем установите зависимости:
+```bash
+pip install -r req.txt
+```
 
 ### 3. Настройка базы данных
 Примените миграции для настройки базы данных:
 ```bash
-python manage.py migrate
+python shop/manage.py makemigrations
+python shop/manage.py migrate
+```
+### 5. Создание media папки
+Создайте media папку в корне проекта:
+```bash
+cd shop
+mkdir media
+mkdir media/products
 ```
 ### 4. Запуск сервера разработки
 Запустите сервер разработки:
 ```bash 
-python manage.py runserver
+python shop/manage.py runserver
 ```
 Приложение будет доступно по адресу: http://127.0.0.1:8000.
 
@@ -72,9 +95,9 @@ python manage.py runserver
 ##Статические файлы
 Для работы со статическими файлами выполните команду:
 ```bash
-python manage.py collectstatic
+python shop/manage.py collectstatic
 ```
-Убедитесь, что в настройках указаны правильные пути:
+Убедитесь, что в настройках (shop/shop/settings.py) указаны правильные пути:
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -82,6 +105,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 Создание суперпользователя
 Для доступа в админ-панель создайте суперпользователя:
 ```bash
-python manage.py createsuperuser
+python shop/manage.py createsuperuser
 ```
 Админ-панель будет доступна по адресу: http://127.0.0.1:8000/admin.
